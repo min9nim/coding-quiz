@@ -33,6 +33,31 @@ function merge2(nums) {
   return Array.from(new Set(a))
 }
 
+function merge3(nums) {
+  const a= nums[0]
+  const b= nums[1]
+  const arr = []
+
+  let ai = 0
+  let bi = 0
+  while(arr.length < a.length + b.length){
+    if(a[ai] < b[bi]){
+      arr.push(a[ai])
+      ai++
+    }else{
+      arr.push(b[bi])
+      bi++
+    }
+    if(ai === a.length){
+      arr.push(...b.slice(bi))
+    }
+    if(bi === b.length){
+      arr.push(...a.slice(ai))
+    }
+  }
+  return Array.from(new Set(arr))
+}
+
 test('test', () => {
   expect(
     merge1([
@@ -46,6 +71,12 @@ test('test', () => {
       [1, 2, 4],
     ]),
   ).toEqual([1, 2, 3, 4])
+  expect(
+    merge1([
+      [1, 2, 3, 3, 6, 7, 8, 12, 14, 16],
+      [1, 2, 4, 12, 16, 17, 23, 26, 78],
+    ]),
+  ).toEqual([1, 2, 3, 4, 6, 7, 8, 12, 14, 16, 17, 23, 26, 78])
 
   expect(
     merge2([
@@ -61,6 +92,25 @@ test('test', () => {
   ).toEqual([1, 2, 3, 4])
   expect(
     merge2([
+      [1, 2, 3, 3, 6, 7, 8, 12, 14, 16],
+      [1, 2, 4, 12, 16, 17, 23, 26, 78],
+    ]),
+  ).toEqual([1, 2, 3, 4, 6, 7, 8, 12, 14, 16, 17, 23, 26, 78])
+
+  expect(
+    merge3([
+      [1, 2],
+      [1, 2],
+    ]),
+  ).toEqual([1, 2])
+  expect(
+    merge3([
+      [1, 2, 3, 3],
+      [1, 2, 4],
+    ]),
+  ).toEqual([1, 2, 3, 4])
+  expect(
+    merge3([
       [1, 2, 3, 3, 6, 7, 8, 12, 14, 16],
       [1, 2, 4, 12, 16, 17, 23, 26, 78],
     ]),
