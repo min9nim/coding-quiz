@@ -5,45 +5,43 @@ input : A = “abc”, B = “acb”
 output : true
 */
 
-
-function swappable(a,b){
-  if(a.length !== b.length){
+function swappable(a, b) {
+  if (a.length !== b.length) {
     return false
   }
-  if(a === b && new Set(a.split('')).size < a.length){
+  if (a === b && new Set(a.split('')).size < a.length) {
     return true
   }
 
   let temp = []
   let cnt = 0
 
-  for(let i = 0; i < a.length ; i++){
-    if(a[i] === b[i]){
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] === b[i]) {
       continue
-    }else{
+    } else {
       cnt++
-      if(cnt > 2){
+      if (cnt > 2) {
         return false
       }
-      if(temp.length > 0){
-        if(!(temp[0] === b[i] && temp[1] === a[i])){
+      if (temp.length > 0) {
+        if (!(temp[0] === b[i] && temp[1] === a[i])) {
           return false
         }
-      }else{
-        temp = [ a[i], b[i] ]
+      } else {
+        temp = [a[i], b[i]]
       }
     }
   }
   return cnt >= 2
 }
 
-
 test('swapable', () => {
-  expect(swapable('aab', 'aab')).toEqual(true)
-  expect(swapable('abccc', 'acbbb') ).toEqual(false)
-  expect(swapable('abccc', 'acbbb')).toEqual(false)
-  expect(swapable('abccc', 'acbbb')).toEqual(false)
-  expect(swapable('abcwq', 'acbwq')).toEqual(true)
-  expect(swapable('abc', 'ayc')).toEqual(false)
-  expect(swapable('ab', 'ab')).toEqual(false)
+  expect(swappable('aab', 'aab')).toEqual(true)
+  expect(swappable('abccc', 'acbbb')).toEqual(false)
+  expect(swappable('abccc', 'acbbb')).toEqual(false)
+  expect(swappable('abccc', 'acbbb')).toEqual(false)
+  expect(swappable('abcwq', 'acbwq')).toEqual(true)
+  expect(swappable('abc', 'ayc')).toEqual(false)
+  expect(swappable('ab', 'ab')).toEqual(false)
 })
