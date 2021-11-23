@@ -33,7 +33,7 @@ function swappable(a, b) {
       }
     }
   }
-  return cnt >= 2
+  return cnt === 2
 }
 
 test('swapable', () => {
