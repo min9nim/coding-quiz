@@ -6,15 +6,13 @@ var longestCommonPrefix = function(strs) {
   if(strs.length === 1){
     return strs[0]
   }
-  let prefix = ''
   let i = 0
   while(true){
     for(let j=0; j<strs.length-1; j++){
       if(!strs[j][i] || strs[j][i] !== strs[j+1][i]){
-        return prefix
+        return strs[0].slice(0,i)
       }
     }
-    prefix += strs[0][i]
     i++
   }
 };
@@ -26,4 +24,5 @@ test('longestCommonPrefix', () => {
   expect(longestCommonPrefix(["dog","racecar","car"])).toEqual('')
   expect(longestCommonPrefix(["dog","racecar","car"])).toEqual('')
   expect(longestCommonPrefix(["dog"])).toEqual('dog')
+  expect(longestCommonPrefix([""])).toEqual('')
 })
