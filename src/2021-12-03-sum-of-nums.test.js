@@ -19,12 +19,22 @@ Example 2.
 *
 * */
 
-function solution(nums){
-
+function solution(nums, k){
+  let count = 0
+  for(let i=0; i<nums.length; i++){
+    let sum = 0
+    for(let j=i; j<nums.length; j++){
+      sum += nums[i]
+      if(sum === k){
+        count++
+      }
+    }
+  }
+  return count
 }
 
 
-
 test('sum-of-nums', () => {
-
+  expect(solution([1,1,1], 2)).toEqual(2)
+  expect(solution([1,2,3], 3)).toEqual(2)
 })
