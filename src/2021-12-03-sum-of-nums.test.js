@@ -19,13 +19,13 @@ Example 2.
 *
 * */
 
-function solution(nums, k){
+function solution(nums, k) {
   let count = 0
-  for(let i=0; i<nums.length; i++){
+  for (let i = 0; i < nums.length; i++) {
     let sum = 0
-    for(let j=i; j<nums.length; j++){
+    for (let j = i; j < nums.length; j++) {
       sum += nums[i]
-      if(sum === k){
+      if (sum === k) {
         count++
       }
     }
@@ -33,8 +33,29 @@ function solution(nums, k){
   return count
 }
 
+// 아.. 이건 진짜 이해하기 어렵넹 ㅠ
+function solution2(nums, k) {
+  let count = 0
+  let sum = 0
+  let map = new Map()
+  map.set(0, 1)
+
+  for (let i = 0; i < nums.length; i++) {
+    sum += nums[i]
+    const lookingFor = map.get(sum - k)
+    if (lookingFor) {
+      count += lookingFor
+    }
+    const curSum = map.get(sum) || 0
+    map.set(sum, curSum + 1)
+  }
+
+  return count
+}
 
 test('sum-of-nums', () => {
-  expect(solution([1,1,1], 2)).toEqual(2)
-  expect(solution([1,2,3], 3)).toEqual(2)
+  expect(solution2([1, 1, 1], 2)).toEqual(2)
+  expect(solution2([1, 1, 1, 1], 2)).toEqual(3)
+  expect(solution2([1, 1, 1, 1, 1], 2)).toEqual(4)
+  expect(solution2([1, 2, 3], 3)).toEqual(2)
 })
