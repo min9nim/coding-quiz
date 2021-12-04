@@ -19,6 +19,9 @@ Example 2.
 *
 * */
 
+function solution(nums){
+
+}
 
 
 
