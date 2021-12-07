@@ -53,8 +53,6 @@ function solution(entry_log, infect) {
         result.add(num)
       }
     }
-
-    console.log('xxx', inOffice)
   }
 
   return Array.from(result).sort((a,b) => a-b)
