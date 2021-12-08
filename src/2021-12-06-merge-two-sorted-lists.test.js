@@ -6,7 +6,7 @@ var mergeTwoLists = function (list1, list2) {
     j = 0
 
   while (result.length < list2.length + list1.length) {
-    console.log('result', result)
+    // console.log('result', result)
     if (list1[i] === undefined && list2[j] !== undefined) {
       result.push(...list2.slice(j))
       break
