@@ -51,8 +51,27 @@ function solution(numbers, start, finish) {
   return answer
 }
 
+function solution2(numbers, start, finish){
+  for(let i=1; i<numbers.length; i++){
+    numbers[i] += numbers[i-1]
+  }
+  const answer = []
+  for(let i=0; i<start.length; i++){
+    if(start[i] === 0){
+      answer.push(numbers[finish[i]])
+    }else{
+      answer.push(numbers[finish[i]] - numbers[start[i]-1])
+    }
+  }
+  return answer
+}
+
 test('sum of nums', () => {
   expect(solution([100, 101, 102, 103, 104], [1, 2], [2, 4])).toEqual([
+    203,
+    309,
+  ])
+  expect(solution2([100, 101, 102, 103, 104], [1, 2], [2, 4])).toEqual([
     203,
     309,
   ])
