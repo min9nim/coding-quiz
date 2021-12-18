@@ -19,7 +19,7 @@ var addTwoNumbers = function(l1, l2) {
   while(l1 || l2 || flag){
     const sum = (l1?.val || 0) + (l2?.val || 0) + flag
     current.val = sum%10
-    flag = Math.floor(sum/10)
+    flag = sum > 9 ? 1 : 0
 
     if(!l1?.next && !l2?.next && !flag){
       break
