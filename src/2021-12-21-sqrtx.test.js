@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/sqrtx/submissions/
 
 var mySqrt = function(x) {
-  let start = 1, end = Math.floor(x/2)
+  let start = 0, end = x
 
   while(true){
     let pivot = Math.floor((start+end)/2)
@@ -10,22 +10,19 @@ var mySqrt = function(x) {
     if(power <= x && nextPower > x){
       return pivot
     }
-    if(power > x){
-      end = pivot-1
-      continue
-    }
-    if( nextPower < x ){
-      start = pivot+1
-      continue
-    }
     if(nextPower === x){
       return pivot+1
     }
-    break
+    if( nextPower < x ){
+      start = pivot+1
+    }
+    if(power > x){
+      end = pivot-1
+    }
   }
 };
 
-test('sqrts', () => {
+test('sqrtx', () => {
   expect(mySqrt(0)).toEqual(0)
   expect(mySqrt(1)).toEqual(1)
   expect(mySqrt(2)).toEqual(1)
