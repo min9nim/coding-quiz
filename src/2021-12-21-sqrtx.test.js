@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/sqrtx/submissions/
+// https://leetcode.com/problems/sqrtx
 
 var mySqrt = function(x) {
   let start = 0, end = x
