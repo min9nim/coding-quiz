@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest --watchAll",
+    "test:ci": "CI=true jest",
     "reformat": "prettier --write"
   },
   "devDependencies": {
