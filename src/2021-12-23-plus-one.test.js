@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/plus-one/submissions/
+// https://leetcode.com/problems/plus-one
 
 /**
  * @param {number[]} digits
@@ -22,7 +22,6 @@ var plusOne = function(digits) {
     digits.splice(0,0,1)
   }
   return digits
-
 };
 
 
